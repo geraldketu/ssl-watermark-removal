@@ -81,17 +81,6 @@ The model performs well on the synthetic test set, removing most watermark textu
 
 ---
 
-
-## Links
-
-| Resource      | Link                                                                                                   |
-| ------------- | ------------------------------------------------------------------------------------------------------ |
-| Dataset       | [GeraldNdawula/Watermark_Dataset_v2](https://huggingface.co/datasets/GeraldNdawula/Watermark_Dataset_v2)  |
-| Model weights | [GeraldNdawula/Watermark_Removal_UNet_v2](https://huggingface.co/GeraldNdawula/Watermark_Removal_UNet_v2) |
-
-
-
-
 ## What Changed Between v1 and v2
 
 | Setting                 | v1              | v2                         |
@@ -117,7 +106,6 @@ The PatchGAN discriminator loss flattened at around 0.71 early in training, whic
 
 ---
 
----
 
 ## Repository Structure
 
@@ -133,6 +121,14 @@ ssl-watermark-removal/
     ├── 03_evaluation.ipynb
     └── figure_generation.ipynb
 ```
+## Links
+
+| Resource      | Link                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------ |
+| Dataset       | [GeraldNdawula/Watermark_Dataset_v2](https://huggingface.co/datasets/GeraldNdawula/Watermark_Dataset_v2)  |
+| Model weights | [GeraldNdawula/Watermark_Removal_UNet_v2](https://huggingface.co/GeraldNdawula/Watermark_Removal_UNet_v2) |
+
+---
 
 
 ## Citation
