@@ -79,7 +79,7 @@ The model performs well on the synthetic test set, removing most watermark textu
 
 **Real photos** — evaluated qualitatively. The post-processing pipeline improves output quality noticeably, especially the mask-guided blending step which prevents the model from blurring areas of the image that do not have a watermark.
 
----
+```
 
 ## What Changed Between v1 and v2
 
@@ -98,13 +98,13 @@ The model performs well on the synthetic test set, removing most watermark textu
 The lower PSNR and SSIM in v2 is expected — the task is harder because the watermarks are more varied and the images include JPEG distortions that were not in v1.
 
 
----
+```
 
 ## Known Issues
 
 The PatchGAN discriminator loss flattened at around 0.71 early in training, which means the adversarial component stopped providing useful gradients. The reconstruction improvement came mainly from the L1 and perceptual losses. Future work would switch to a Wasserstein GAN objective, use label smoothing, and update the discriminator more frequently to keep the adversarial training stable.
 
----
+```
 
 
 ## Repository Structure
@@ -128,7 +128,7 @@ ssl-watermark-removal/
 | Dataset       | [GeraldNdawula/Watermark_Dataset_v2](https://huggingface.co/datasets/GeraldNdawula/Watermark_Dataset_v2)  |
 | Model weights | [GeraldNdawula/Watermark_Removal_UNet_v2](https://huggingface.co/GeraldNdawula/Watermark_Removal_UNet_v2) |
 
----
+```
 
 
 ## Citation
