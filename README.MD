@@ -2,31 +2,6 @@
 
 This project trains a deep learning model to remove proof watermarks from graduation photos without needing any real clean-watermarked image pairs. Instead, synthetic watermarks are applied to clean portrait images to create training data automatically.
 
----
-
-## Links
-
-| Resource      | Link                                                                                                   |
-| ------------- | ------------------------------------------------------------------------------------------------------ |
-| Dataset       | [GeraldNdawula/Watermark_Dataset_v2](https://huggingface.co/datasets/GeraldNdawula/Watermark_Dataset_v2)  |
-| Model weights | [GeraldNdawula/Watermark_Removal_UNet_v2](https://huggingface.co/GeraldNdawula/Watermark_Removal_UNet_v2) |
-
----
-
-## Repository Structure
-
-```
-ssl-watermark-removal/
-├── v1/
-│   ├── gerald_ndawula_dataset_Creation.ipynb
-│   └── gerald_ndawula_unet_model.ipynb
-│
-└── v2/
-    ├── 01_dataset_creation.ipynb
-    ├── 02_model_training.ipynb
-    ├── 03_evaluation.ipynb
-    └── figure_generation.ipynb
-```
 
 ---
 
@@ -35,25 +10,6 @@ ssl-watermark-removal/
 Photography studios watermark graduation photos with text like PROOF, PREVIEW, or their studio name to prevent unpaid use. The problem with removing these watermarks using standard machine learning is that you need the same photo both with and without the watermark for training. Studios never release the clean originals, so building that kind of dataset is not possible.
 
 This project gets around that by using self-supervised learning. Clean portrait images have synthetic watermarks added to them in code, and the model is trained to reverse that process. The watermarked image is the input and the original clean image is the label — all generated automatically with no manual labelling needed.
-
----
-
-## What Changed Between v1 and v2
-
-| Setting                 | v1              | v2                         |
-| ----------------------- | --------------- | -------------------------- |
-| Image resolution        | 128×128        | 256×256                   |
-| Watermark opacity range | 180–250        | 80–220                    |
-| JPEG compression noise  | No              | Yes                        |
-| Colour watermarks       | No              | Yes (red, blue, gold)      |
-| Validation split        | None            | 80/20                      |
-| Loss function           | L1 + Perceptual | L1 + Perceptual + PatchGAN |
-| Epochs                  | 30              | 50                         |
-| Val PSNR                | ~34 dB          | 29.35 dB                   |
-| Val SSIM                | ~0.96           | 0.8893                     |
-
-The lower PSNR and SSIM in v2 is expected — the task is harder because the watermarks are more varied and the images include JPEG distortions that were not in v1.
-
 ---
 
 ## How It Works
@@ -108,7 +64,6 @@ model.load_state_dict(ckpt["generator"])
 model.eval()
 ```
 
----
 
 ## Results
 
@@ -126,11 +81,59 @@ The model performs well on the synthetic test set, removing most watermark textu
 
 ---
 
+
+## Links
+
+| Resource      | Link                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------ |
+| Dataset       | [GeraldNdawula/Watermark_Dataset_v2](https://huggingface.co/datasets/GeraldNdawula/Watermark_Dataset_v2)  |
+| Model weights | [GeraldNdawula/Watermark_Removal_UNet_v2](https://huggingface.co/GeraldNdawula/Watermark_Removal_UNet_v2) |
+
+
+
+
+## What Changed Between v1 and v2
+
+| Setting                 | v1              | v2                         |
+| ----------------------- | --------------- | -------------------------- |
+| Image resolution        | 128×128        | 256×256                   |
+| Watermark opacity range | 180–250        | 80–220                    |
+| JPEG compression noise  | No              | Yes                        |
+| Colour watermarks       | No              | Yes (red, blue, gold)      |
+| Validation split        | None            | 80/20                      |
+| Loss function           | L1 + Perceptual | L1 + Perceptual + PatchGAN |
+| Epochs                  | 30              | 50                         |
+| Val PSNR                | ~34 dB          | 29.35 dB                   |
+| Val SSIM                | ~0.96           | 0.8893                     |
+
+The lower PSNR and SSIM in v2 is expected — the task is harder because the watermarks are more varied and the images include JPEG distortions that were not in v1.
+
+
+---
+
 ## Known Issues
 
 The PatchGAN discriminator loss flattened at around 0.71 early in training, which means the adversarial component stopped providing useful gradients. The reconstruction improvement came mainly from the L1 and perceptual losses. Future work would switch to a Wasserstein GAN objective, use label smoothing, and update the discriminator more frequently to keep the adversarial training stable.
 
 ---
+
+---
+
+## Repository Structure
+
+```
+ssl-watermark-removal/
+├── v1/
+│   ├── gerald_ndawula_dataset_Creation.ipynb
+│   └── gerald_ndawula_unet_model.ipynb
+│
+└── v2/
+    ├── 01_dataset_creation.ipynb
+    ├── 02_model_training.ipynb
+    ├── 03_evaluation.ipynb
+    └── figure_generation.ipynb
+```
+
 
 ## Citation
 
