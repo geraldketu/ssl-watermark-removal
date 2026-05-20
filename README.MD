@@ -109,7 +109,6 @@ The PatchGAN discriminator loss flattened at around 0.71 early in training, whic
 
 ## Repository Structure
 
-```
 ssl-watermark-removal/
 ├── v1/
 │   ├── gerald_ndawula_dataset_Creation.ipynb
