@@ -1,6 +1,6 @@
 # Self-Supervised Watermark Removal from Graduation Photos
 
-Gerald Ndawula
+
 
 This project trains a deep learning model to remove proof watermarks from graduation photos without needing any real clean-watermarked image pairs. Instead, synthetic watermarks are applied to clean portrait images to create training data automatically.
 
