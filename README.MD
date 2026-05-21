@@ -1,4 +1,4 @@
-# elf-Supervised Watermark Removal from Graduation Photos
+# Self-Supervised Watermark Removal from Graduation Photos
 
 > Remove proof watermarks from graduation photos using a self-supervised deep learning pipeline — no real clean-watermarked pairs needed.
 
