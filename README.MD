@@ -1,6 +1,6 @@
 # Self-Supervised Watermark Removal from Graduation Photos
 
-> Remove proof watermarks from graduation photos using a self-supervised deep learning pipeline — no real clean-watermarked pairs needed.
+> Remove proof watermarks from graduation photos using a self-supervised deep learning pipeline, no real clean-watermarked pairs needed.
 
 <p align="left">
   <a href="https://huggingface.co/datasets/GeraldNdawula/Watermark_Dataset_v2">
@@ -17,7 +17,7 @@
 
 ## Overview
 
-Photography studios watermark graduation photos with text like **PROOF**, **PREVIEW**, or their studio name to prevent unpaid use. Removing these watermarks with standard supervised learning requires the same photo both with and without the watermark — but studios never release the clean originals.
+Photography studios watermark graduation photos with text like **PROOF**, **PREVIEW**, or their studio name to prevent unpaid use. Removing these watermarks with standard supervised learning requires the same photo both with and without the watermark, but studios never release the clean originals.
 
 This project solves that with **self-supervised learning**. Synthetic watermarks are applied to clean portrait images in code, and the model is trained to reverse that process. No manual labelling needed.
 
